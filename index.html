@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>INVITACIÓN PARA ANNIE</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#ff9aa2,#ffb7c5);
+    overflow:hidden;
+}
+.card{
+    background:white;
+    width:420px;
+    margin:80px auto;
+    padding:25px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,0.25);
+    animation:pop .6s ease;
+}
+@keyframes pop{
+    from{transform:scale(.7);opacity:0}
+    to{transform:scale(1);opacity:1}
+}
+.images{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin:15px 0;
+}
+.images img{
+    width:170px;
+    height:170px;
+    object-fit:cover;
+    border-radius:18px;
+}
+button{
+    padding:12px 26px;
+    margin:10px;
+    border:none;
+    border-radius:30px;
+    font-size:16px;
+    cursor:pointer;
+    transition:.2s;
+}
+button:hover{transform:scale(1.1)}
+.yes{background:#ff4d6d;color:white}
+.no{background:#ddd}
+
+.heart{
+    position:absolute;
+    animation:float 6s linear infinite;
+}
+@keyframes float{
+    from{bottom:-20px;opacity:1}
+    to{bottom:110%;opacity:0}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="box"></div>
+
+<script>
+let page = 1;
+
+function heart(){
+    const h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="❤️";
+    h.style.left=Math.random()*100+"%";
+    h.style.fontSize=(15+Math.random()*25)+"px";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
+}
+setInterval(heart,400);
+
+function goYes(){
+    page = 6;
+    render();
+}
+
+function goNo(){
+    page++;
+    render();
+}
+
+function nextPage(){
+    page++;
+    render();
+}
+
+function render(){
+const b=document.getElementById("box");
+
+/* PÁGINA 1 */
+if(page===1){
+b.innerHTML=`
+<h2>HOLI AMORCITO 💕</h2>
+<p>TENGO MUCHAS GANAS DE HACERTE UNA PREGUNTAAAA 🥺</p>
+<div class="images">
+<img src="imagenes/PAG 1 1.jpg">
+<img src="imagenes/PAG 1 2.jpg">
+</div>
+<button class="yes" onclick="nextPage()">CONTINUAR ➡️</button>`;
+}
+
+/* PÁGINA 2 */
+if(page===2){
+b.innerHTML=`
+<h2>QUIERES SER MI VALENTINES??? 💘</h2>
+<div class="images">
+<img src="imagenes/PAG 2 1.jpg">
+<img src="imagenes/PAG 2 2.jpg">
+</div>
+<button class="yes" onclick="goYes()">SÍ 😍</button>
+<button class="no" onclick="goNo()">NO 🙃</button>`;
+}
+
+/* PÁGINA 3 */
+if(page===3){
+b.innerHTML=`
+<h2>COMO QUE NO QUIERES SER MI VALENTINESS??? 😤</h2>
+<div class="images">
+<img src="imagenes/PAG 3 1.jpg">
+<img src="imagenes/PAG 3 2.jpg">
+</div>
+<button class="yes" onclick="goYes()">SÍ 🥺</button>
+<button class="no" onclick="goNo()">NO 😅</button>`;
+}
+
+/* PÁGINA 4 */
+if(page===4){
+b.innerHTML=`
+<h2>ESTÁS SEGURA DE QUE NO QUIERES SER MI VALENTINES?? 😏</h2>
+<div class="images">
+<img src="imagenes/PAG 4 1.jpg">
+<img src="imagenes/PAG 4 2.jpg">
+</div>
+<button class="yes" onclick="goYes()">SÍ 💞</button>
+<button class="no" onclick="goNo()">NO 😬</button>`;
+}
+
+/* PÁGINA 5 */
+if(page===5){
+b.innerHTML=`
+<h2>BUENOOO TE JODISTEEEE 😈💘<br>PORQUE NO ACEPTARÉ UN NO COMO RESPUESTA</h2>
+<div class="images">
+<img src="imagenes/PAG 5 1.jpg">
+<img src="imagenes/PAG 5 2.jpg">
+</div>
+<button class="yes" onclick="goYes()">SÍ 😍</button>
+<button class="yes" onclick="goYes()">SÍ 💖</button>`;
+}
+
+/* PÁGINA FINAL */
+if(page===6){
+b.innerHTML=`
+<h2>WEEEEEEEE 💕💖<br>SERÁS MI VALENTINESSSS 😍<br>TE AMOOOOOO 💘</h2>
+<div class="images">
+<img src="imagenes/PAG 6 1.jpg">
+<img src="imagenes/PAG 6 2.jpg">
+</div>`;
+}
+}
+
+render();
+</script>
+
+</body>
+</html>
+
